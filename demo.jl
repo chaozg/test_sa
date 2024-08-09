@@ -20,6 +20,7 @@ function dudt!(du, u, p, t)
 end
 
 u0 = ones(no_of_elements+1)
+u0[1] = 0.0
 f = ODEFunction(dudt!, mass_matrix = M)
 tspan =(0.0, 1.0)
 prob = ODEProblem(f, u0, tspan)
