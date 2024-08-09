@@ -3,6 +3,7 @@ using Zygote, SciMLSensitivity
 using ForwardDiff
 using Plots
 using NPZ
+using LinearAlgebra
 
 S = npzread("S.npy")
 M = npzread("M.npy")
