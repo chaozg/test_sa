@@ -23,7 +23,7 @@ f = ODEFunction(dudt!, mass_matrix = M)
 tspan =(0.0, 1.0)
 
 # 1. forward simulation and plot solution
-prob = ODEProblem(f, u0, tspan, p)
+prob = ODEProblem(f, u0, tspan)
 sol = solve(prob, FBDF(), reltol = ode_reltol, abstol = ode_abstol, saveat = 0.1) #Rodas5 #FBDF
 
 for i in 1:length(sol.t)
