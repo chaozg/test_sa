@@ -9,8 +9,8 @@ using LinearAlgebra
 S = npzread("S.npy")
 M = npzread("M.npy")
 no_of_elements = 128
-ode_reltol = 1e-14
-ode_abstol = 1e-14
+ode_reltol = 1e-12
+ode_abstol = 1e-12
 
 # 2. ODE problem with mass matrix
 function dudt!(du, u, p, t)
@@ -40,17 +40,17 @@ function scaler_fun_of_interest(u)
     return norm(sol.u[end])
 end
 
-# # reverse mode
-# rs_grad = Zygote.gradient(scaler_fun_of_interest, u0)[1]
+# reverse mode
+rs_grad = Zygote.gradient(scaler_fun_of_interest, u0)[1]
 
-# # forward mode
-# fs_grad = ForwardDiff.gradient(scaler_fun_of_interest, u0)
+# forward mode
+fs_grad = ForwardDiff.gradient(scaler_fun_of_interest, u0)
 
-# # plot gradient
-# scalar_plot = plot(rs_grad, label="reverse", framestyle = :box)
-# plot!(fs_grad, label="forward", framestyle = :box)
-# title!("Gradient of norm of solution")
-# display(scalar_plot)
+# plot gradient
+scalar_plot = plot(rs_grad, label="reverse", framestyle = :box)
+plot!(fs_grad, label="forward", framestyle = :box)
+title!("Gradient of norm of solution")
+display(scalar_plot)
 
 # # 5. Sensitivity of vector function of interest
 # function vector_fun_of_interest(u)
