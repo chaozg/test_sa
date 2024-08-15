@@ -11,7 +11,7 @@ M = npzread("M.npy")
 no_of_elements = 128
 ode_reltol = 1e-12
 ode_abstol = 1e-12
-ode_maxiters = 1e7
+ode_maxiters = 1e5
 
 # 2. ODE problem with mass matrix
 function dudt!(du, u, p, t)
